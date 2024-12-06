@@ -1,5 +1,6 @@
 const express = require("express")
 const app = express();
+const path = require("path")
 const router = require("./router/routers")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
@@ -41,10 +42,10 @@ app.get("/",(req,res)=>{
      res.send("WECOME TO HOTEL MENGEMT SYSTEM");
 })
 
-if(process.env.NODE_ENV === "production"){
-	app.use(express.static("client/build"))
-}
+const _dirname = path.resolve()
 
-app.listen(PORT,function(req,res){
+app.use(express.static(path.join(_dirname,"/Frontend/dist")))
+
+app.listen(PORT,function(){
     console.log(`SERVER IS STRATING FOR ${PORT} PROT NUMBER.`)
 })
