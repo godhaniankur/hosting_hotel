@@ -1,5 +1,5 @@
 
-const BASE_URLS = "http://localhost:4000/api/v2"
+const BASE_URLS = "https://hosting-hotel.onrender.com"
 
 export const authEndpoint ={
     LOGIN_API : BASE_URLS + "/login",
