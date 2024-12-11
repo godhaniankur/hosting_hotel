@@ -9,8 +9,8 @@ export function loginuser(data,nevigaet){
     return async(dispatch) =>{
         try {
             const responce = await apiConneter("POST",authEndpoint.LOGIN_API,data);
-            console.log("aa")
-            console.log("LOG_API Responces.....",responce);
+            // console.log("aa")
+            // console.log("LOG_API Responces.....",responce);
 
             if(!responce.data.sucess){
                 throw new Error(responce.data.message)
@@ -26,7 +26,7 @@ export function loginuser(data,nevigaet){
             localStorage.setItem("user",JSON.stringify(responce.data.user))
             nevigaet("/")
         } catch (error) {
-            console.log("LOGIN_API_ERROR....",error);
+            // console.log("LOGIN_API_ERROR....",error);
             alert("Not Regsister user.")
         }    
     }
@@ -35,10 +35,10 @@ export function loginuser(data,nevigaet){
 export function sendotp(contact_no,nevigate){
     return async() =>{
         try {
-            console.log("Responce of send Data",contact_no)
+            // console.log("Responce of send Data",contact_no)
             const responce = await apiConneter("POST",authEndpoint.SEND_OTP_API,{contact_no});
 
-            console.log("RESPONCE_SEND_OTP_API",responce);
+            // console.log("RESPONCE_SEND_OTP_API",responce);
 
         if(!responce.data.sucess){
             throw new Error(responce.data.message)
@@ -67,8 +67,8 @@ export function singup(data,nevigate){
             alert("singup accessfull");
             nevigate("/login")
         } catch (error) {
-            console.log("singup not acess")
-            console.log(error)
+            // console.log("singup not acess")
+            // console.log(error)
             nevigate("/signup")
         }
     }
@@ -79,7 +79,7 @@ export function signupWithGoogles(Name,email,nevigate){
         try {
             const responce = await apiConneter("POST",authEndpoint.SIGNUP_GOOGLE_API,{Name,email});
 
-            console.log("RESPONCE_SEND_OTP_API",responce);
+            // console.log("RESPONCE_SEND_OTP_API",responce);
     
             if(!responce.data.sucess){
                 throw new Error(responce.data.message)
@@ -88,8 +88,8 @@ export function signupWithGoogles(Name,email,nevigate){
             alert("singup accessfull");
             nevigate("/login")
         } catch (error) {
-            console.log("singup not acess")
-            console.log(error)
+            // console.log("singup not acess")
+            // console.log(error)
             nevigate("/signup")
         }
     }
@@ -98,22 +98,22 @@ export function signupWithGoogles(Name,email,nevigate){
 export function loginuserWithGoogle(email,nevigaet){
     return async(dispatch) =>{
         try {
-            console.log("login with Email..",email)
+            // console.log("login with Email..",email)
             const responce = await apiConneter("POST",authEndpoint.LOGIN_GOOGLE_API,{email});
-            console.log("aa")
-            console.log("LOG_API Responces.....",responce);
+            // console.log("aa")
+            // console.log("LOG_API Responces.....",responce);
 
             if(!responce.data.sucess){
                 throw new Error(responce.data.message)
             }
 
-            console.log("logingin sucessFully")
+            // console.log("logingin sucessFully")
             dispatch(settoken(responce.data.token))
             localStorage.setItem("token",JSON.stringify(responce.data.token))
             localStorage.setItem("user",JSON.stringify(responce.data.user))
             nevigaet("/")
         } catch (error) {
-            console.log("LOGIN_API_ERROR....",error);
+            // console.log("LOGIN_API_ERROR....",error);
             alert("Not Regsister user.")
         }    
     }
@@ -133,7 +133,7 @@ export function updateProfile(data,token){
                 throw new Error(responce.data.message)
             }
     
-            console.log("UPADTE PROFILE API......",responce.data)
+            // console.log("UPADTE PROFILE API......",responce.data)
 
             localStorage.removeItem("user");
             localStorage.setItem("user",JSON.stringify(responce?.data?.up))
@@ -163,11 +163,11 @@ export function changepassword(data,token){
                 throw new Error(responce.data.message)
             }
 
-            console.log("PASSWORD CHANGE API.......",responce.data)
+            // console.log("PASSWORD CHANGE API.......",responce.data)
 
             toast.success("changePassword successfully.")
         }catch(error){
-            console.log("Internal not change password api Error",error)
+            // console.log("Internal not change password api Error",error)
             toast.error("Not Change Password!")
         }
         toast.dismiss(toastId)
@@ -196,14 +196,14 @@ export async function userAdmin(token){
             throw new Error(responce.data.message)
         }
 
-        console.log("Responce Of user Detail API...",responce.data)
+        // console.log("Responce Of user Detail API...",responce.data)
 
         result = responce?.data?.user
 
         toast.success("Information of Customer!")
 
     } catch (error) {
-        console.log("CUSTOMER IS NOT FTCHING OF API....",error)
+        // console.log("CUSTOMER IS NOT FTCHING OF API....",error)
         toast.error("Detail is Not Feching!")
     }
     return result

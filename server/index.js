@@ -16,6 +16,7 @@ app.use(
 	cors({
 		origin:`${BASE_URL}`,
 		credentials:true,
+		
 	})
 )
 

@@ -10,20 +10,20 @@ export async function allRatingAndReviews(){
 
         try {
             const responce = await apiConneter("GET",RatingOfEndpoint.ALL_RATING_OF_USER,null);
-            console.log("RESPONCE OF RATING AND REVIWE OF API",responce);
+            // console.log("RESPONCE OF RATING AND REVIWE OF API",responce);
 
             if(!responce.data.sucess){
                 throw new Error(responce.data.message);
             }
 
             result = responce.data.ratings
-            console.log("console of Result:",result)
+            // console.log("console of Result:",result)
 
-            console.log("sucessFully Fecting Of Information",responce);
+            // console.log("sucessFully Fecting Of Information",responce);
             
         } catch (error) {
-            console.log("error",error)
-            console.log("Not Rating OF user.")
+            // console.log("error",error)
+            // console.log("Not Rating OF user.")
         }
         return result;
     
@@ -35,18 +35,18 @@ export async function avrageRating(hotelId){
         
         const responce = await apiConneter("POST",RatingOfEndpoint.AVRANGE_RATING_HOTEL,{hotelId});
         
-        console.log("Finding of AvrangeRating OF hotel",responce)
+        // console.log("Finding of AvrangeRating OF hotel",responce)
 
         if(!responce.data.sucess){
             throw new Error(responce.data.message);
         }
 
         Rating = responce.data
-        console.log("console of Result:",Rating)
+        // console.log("console of Result:",Rating)
 
-        console.log("sucessFully Fecting Of hotel Rating",responce);
+        // console.log("sucessFully Fecting Of hotel Rating",responce);
     } catch (error) {
-        console.log("not Getting a avarangeRating..",error)
+        // console.log("not Getting a avarangeRating..",error)
     }
     return Rating
 }
@@ -58,7 +58,7 @@ export function RatingOfUser(data,token){
                 Authorization: `Bearer ${token}`
             })
 
-            console.log("Rating And Review SucessFull",responce)
+            // console.log("Rating And Review SucessFull",responce)
 
             if(!responce.data.sucess){
                 
@@ -67,7 +67,7 @@ export function RatingOfUser(data,token){
 
             toast.success("Rating is SucessFull")
         } catch (error) {
-            console.log("not Ratking of user.",error)
+            // console.log("not Ratking of user.",error)
             toast.error("already Rating",{
                 theme: "dark"
               })

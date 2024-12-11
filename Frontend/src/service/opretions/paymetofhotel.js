@@ -16,11 +16,11 @@ function loadScript(src) {
       }
       script.onerror = () => {
         resolve(false)
-  console.log("src",src)
+  // console.log("src",src)
 
       }
       document.body.appendChild(script)
-      console.log( document.body.appendChild(script))
+      // console.log( document.body.appendChild(script))
     })
   }
 
@@ -44,7 +44,7 @@ export async function booking(bookData,hotelId,user_detail,token,navigate){
             throw new Error(responce.data.message)
         }
 
-        console.log("PAYMENT HOTEL SUCESSFULLY",responce.data)
+        // console.log("PAYMENT HOTEL SUCESSFULLY",responce.data)
 
 
         const options = {
@@ -70,11 +70,11 @@ export async function booking(bookData,hotelId,user_detail,token,navigate){
           paymentObject.open()
           paymentObject.on("payment.failed", function (response) {
             toast.error("Oops! Payment Failed.")
-            console.log(response.error)
+            // console.log(response.error)
     })
         
     } catch (error) {
-        console.log("PAYMENT API ERROR............", error)
+        // console.log("PAYMENT API ERROR............", error)
         toast.error("Could Not make Payment.")
     }
 }
@@ -88,7 +88,7 @@ export async function verifyPayment(bodyData, token) {
         Authorization: `Bearer ${token}`,
       })
   
-      console.log("VERIFY PAYMENT RESPONSE FROM BACKEND............", response)
+      // console.log("VERIFY PAYMENT RESPONSE FROM BACKEND............", response)
   
       if (!response.data.sucess) {
         throw new Error(response.data.message)
@@ -96,7 +96,7 @@ export async function verifyPayment(bodyData, token) {
   
       toast.success("Payment Successful..... ")
     } catch (error) {
-      console.log("PAYMENT VERIFY ERROR............", error)
+      // console.log("PAYMENT VERIFY ERROR............", error)
       toast.error("Could Not Verify Payment.")
     }
     toast.dismiss(toastId)
@@ -113,7 +113,7 @@ export async function adminPaymentdetail(token){
                throw new Error(responce.data.message)
             }
 
-            console.log("ALL PAYMENT DETAIL IS FACING.......",responce.data)
+            // console.log("ALL PAYMENT DETAIL IS FACING.......",responce.data)
 
             result = responce?.data?.data
 
@@ -122,7 +122,7 @@ export async function adminPaymentdetail(token){
             })
          } 
          catch (error) { 
-            console.log("internal server error",error)
+            // console.log("internal server error",error)
             toast.error("INTERNAL SERVER ERROR",{
               position:"bottom-right"
             })
@@ -143,11 +143,11 @@ export async function findbookingpayment(bookingId,token){
          }
 
          result = responce.data
-         console.log("FIND BOOKING PAYMENT API...",responce.data)
+        //  console.log("FIND BOOKING PAYMENT API...",responce.data)
 
          toast.success("Booking conformation")
       } catch (error) {
-         console.log("FIND BOOKING PAYMENT ERROR USER",error)
+        //  console.log("FIND BOOKING PAYMENT ERROR USER",error)
          toast.error("Not Booking")
       }
       return result
